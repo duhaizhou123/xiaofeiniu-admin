@@ -1,15 +1,114 @@
+
 <template>
   <div class="main">
-    <h1>MIAN</h1>
-    <div>左侧导航栏</div>
-    <div>上方提示栏</div>
-    <div>
-      <h2>右下角主体部分</h2>
-      <router-view></router-view>
-    </div>
+    <el-container>
+      <!--侧边导航栏-->
+      <el-aside width="200px">
+        <el-menu :unique-opened="true" :router="true" :default-openeds="defaultOpeneds" :default-active="defaultActive">
+          <!--菜单项1-->
+          <el-menu-item index="/settings">
+            <i class="el-icon-setting"></i>
+            <span slot="title">全局设置</span>
+          </el-menu-item>
+
+          <!--菜单项2-->
+          <el-submenu index="table">
+            <template slot="title">
+              <i class="el-icon-s-grid"></i>
+              <span>桌台管理</span>
+            </template>
+              <el-menu-item-group>
+                <el-menu-item index="/table/list">桌台列表</el-menu-item>
+                <el-menu-item index="/table/add">添加桌台</el-menu-item>
+                <el-menu-item index="/table/update">修改桌台</el-menu-item>
+                <el-menu-item index="/table/delete">删除桌台</el-menu-item>
+              </el-menu-item-group>
+          </el-submenu>
+
+          <!--菜单项3-->
+          <el-menu-item index="/category/list">
+            <i class="el-icon-menu"></i>
+            <span slot="title">菜品类别</span>
+          </el-menu-item>
+
+          <!--菜单项4-->
+          <el-submenu index="dish">
+            <template slot="title">
+              <i class="el-icon-coin"></i>
+              <span>菜品管理</span>
+            </template>
+              <el-menu-item index="/dish/list">菜品列表</el-menu-item>
+              <el-menu-item index="/dish/add">添加菜品</el-menu-item>
+              <el-menu-item index="/dish/update">修改菜品</el-menu-item>
+              <el-menu-item index="/dish/delete">删除菜品</el-menu-item>
+          </el-submenu>
+
+          <!--菜单项5-->
+          <el-menu-item index="/order/list">
+            <i class="el-icon-s-order"></i>
+            <span slot="title">订单管理</span>
+          </el-menu-item>
+
+          <!--菜单项6-->
+          <el-menu-item index="/security">
+            <i class="el-icon-user"></i>
+            <span slot="title">安全设置</span>
+          </el-menu-item>
+        </el-menu>
+      </el-aside>
+      <el-container>
+        <!--顶部信息栏-->
+        <el-header height="60px">
+          <main-header></main-header>
+        </el-header>
+        <!--主体部分-->
+        <el-main>
+          <router-view/>
+        </el-main>
+      </el-container>
+    </el-container>
+
   </div>
+
 </template>
+
+<script>
+import MainHeader from '../components/MainHeader'
+
+export default {
+  data(){//数据属性
+    return{
+
+    }
+  },
+  computed:{//计算属性=数据属性+操作方法
+    defaultOpeneds(){
+      if(this.$route.path.indexOf('table')>-1){
+        return ['table'];
+      }else if(this.$route.path.indexOf('dish')>-1){
+        return ['dish'];
+      }else{
+        return [];
+      }
+    },
+
+
+    defaultActive(){
+      return this.$route.path;
+    }
+  },
+
+  components:{
+    MainHeader
+  },
+  //组件创建前判断用户是否登录，未登录跳转至登录界面
+  beforeCreate() {
+    if (!this.$store.state.adminName) {
+      this.$router.push("/login");
+    }
+  }
+};
+</script>
     
 <style scoped lang="scss">
-
 </style>

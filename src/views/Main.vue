@@ -52,7 +52,13 @@
           <!--菜单项6-->
           <el-menu-item index="/security">
             <i class="el-icon-user"></i>
-            <span slot="title">安全设置</span>
+            <span slot="title">安全管理</span>
+          </el-menu-item>
+
+          <!--菜单项7-->
+          <el-menu-item index="/wechat">
+            <i class="el-icon-chat-dot-square"></i>
+            <span slot="title">我有话说</span>
           </el-menu-item>
         </el-menu>
       </el-aside>

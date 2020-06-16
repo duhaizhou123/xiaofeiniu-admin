@@ -7,7 +7,7 @@
       </el-form-item>
 
       <el-form-item label="登录密码:" prop="apwd">
-        <el-input type="password" placeholder="请输入管理员密码：" v-model="formData.apwd"></el-input>
+        <el-input type="password" placeholder="请输入管理员密码：" v-model="formData.apwd" @keyup.enter.native="doEnter"></el-input>
       </el-form-item>
 
       <el-form-item>
@@ -73,6 +73,10 @@ export default {
       //清除用户输入
       this.formData.aname = "";
       this.formData.apwd = "";
+    },
+    
+    doEnter(){//管理员密码输入框键入回车时执行登录操作
+      this.doLogin();
     }
   }
 };

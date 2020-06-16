@@ -18,6 +18,7 @@ import DishDelete from '../views/DishDelete.vue'
 import DishUpdate from '../views/DishUpdate.vue'
 import OrderList from '../views/OrderList.vue'
 import Security from '../views/Security.vue'
+import WeChat from '../views/WeChat.vue'
 
 
 Vue.use(VueRouter)
@@ -99,6 +100,10 @@ Vue.use(VueRouter)
       {
         path: '/security',
         component: Security
+      },
+      {
+        path: '/wechat',
+        component: WeChat
       }
     ]
   },

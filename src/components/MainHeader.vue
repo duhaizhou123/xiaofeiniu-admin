@@ -2,7 +2,7 @@
 	<div class="xfn-main-header">
 		<h3 class="headr-title">{{$store.state.globalSettings.appName}}管理后台</h3>
 		<div class="header-right">
-			<span class="xfn-user-info">欢迎您：{{$store.state.adminName}}    </span>
+			<span class="xfn-user-info">欢迎回来：{{$store.state.adminName}}    </span>
 			<el-button size="mini" type="primary" round @click="doQuit">退出</el-button>
 		</div>
 		

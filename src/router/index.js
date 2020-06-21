@@ -9,9 +9,6 @@ import TableAdd from '../views/TableAdd.vue'
 import TableDelete from '../views/TableDelete.vue'
 import TableUpdate from '../views/TableUpdate.vue'
 import CategoryList from '../views/CategoryList.vue'
-import CategoryAdd from '../views/CategoryAdd.vue'
-import CategoryDelete from '../views/CategoryDelete.vue'
-import CategoryUpdate from '../views/CategoryUpdate.vue'
 import DishList from '../views/DishList.vue'
 import DishAdd from '../views/DishAdd.vue'
 import DishDelete from '../views/DishDelete.vue'
@@ -64,18 +61,6 @@ Vue.use(VueRouter)
       {
         path: '/category/list',
         component: CategoryList
-      },
-      {
-        path: '/category/add',
-        component: CategoryAdd
-      },
-      {
-        path: '/category/delete',
-        component: CategoryDelete
-      },
-      {
-        path: '/category/update',
-        component: CategoryUpdate
       },
       {
         path: '/dish/list',

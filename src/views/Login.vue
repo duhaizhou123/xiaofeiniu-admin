@@ -23,9 +23,8 @@ export default {
   data() {
     return {
       formData: {
-        aname: "admin",
-        apwd: "123456",
-        apiUrl: this.$store.state.globalSettings.apiUrl
+        aname: "",
+        apwd: ""
       },
       rules: {
         aname: [{ required: true, message: "管理员名不能为空" }],
@@ -43,14 +42,28 @@ export default {
         });
       } else {
         //输入框均有值，执行登陆
-        var url = this.formData.apiUrl + "/admin/login";
+        var url = this.$store.state.globalSettings.apiUrl + "/admin/login";
         this.$axios
           .post(url, this.formData)
           .then(res => {
-            if (200 == res.data.code) {
-              //登录成功
+            if (200 == res.data.code) {//登录成功
               //将管理员名存储到Vuex存储仓库中
               this.$store.commit("setAdminName", this.formData.aname);
+
+              //记录登录信息
+              var url = this.$store.state.globalSettings.apiUrl
+              +"/admin/loginInfo";
+              var loginData = {
+                adminName: this.$store.state.adminName,
+                loginTime: new Date().getTime()
+              }
+              this.$axios.post(url,loginData).then(res=>{
+                if(200 == res.data.code)
+                console.log(res.data);
+              }).catch(err=>{
+                console.log(err);
+              })
+
               //跳转至主页面
               this.$router.push("/main");
             } else {

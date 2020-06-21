@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <el-breadcrumb class="xfn-settings-card" separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
+  <div class="xfn-global_settings">
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/main'}">首页</el-breadcrumb-item>
       <el-breadcrumb-item>全局设置</el-breadcrumb-item>
     </el-breadcrumb>
     <el-card shadow="never">
@@ -92,7 +92,10 @@ export default {
 </script>
   
 <style scoped lang="scss">
-.xfn-settings-card {
-  margin: 20px;
+.xfn-global_settings {
+  .el-breadcrumb{
+    margin: 20px;
+  }
+  
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="xfn_category_list">
+  <div class="xfn-category-list">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/main'}">首页</el-breadcrumb-item>
       <el-breadcrumb-item>菜品类别管理</el-breadcrumb-item>
@@ -163,7 +163,7 @@ export default {
 
 
 <style scoped lang="scss">
-.xfn_category_list {
+.xfn-category-list {
   .el-breadcrumb {
     margin: 20px;
   }

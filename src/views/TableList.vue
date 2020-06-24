@@ -1,8 +1,42 @@
 <template>
-  <div class="tableList">
-    <h1>这是桌台列表页面</h1>
+  <div class="xfn-table-list">
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{path:'/main'}">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>桌台管理</el-breadcrumb-item>
+      <el-breadcrumb-item>桌台列表</el-breadcrumb-item>
+    </el-breadcrumb>
+    <el-row>
+      <el-col v-for="(t,i) in tableList" :sm="12" :md="8" :lg="6" :xl="4">
+        <xfn-table :data="t"></xfn-table>
+      </el-col>
+    </el-row>
   </div>
-</template>   
-<style scoped lang="scss">
+</template>
 
+<script>
+import Table from "../components/Table";
+export default {
+  data(){
+    return{
+      tableList: []
+    }
+  },
+  mounted(){//页面挂载后向后台请求所有桌台信息
+    var url = this.$store.state.globalSettings.apiUrl + '/admin/table';
+    this.$axios.get(url).then(res => {
+        this.tableList = res.data.tableList;
+    }).catch(err => console.log(err))
+  },
+  components:{
+    "xfn-table": Table
+  }
+}
+</script>
+   
+<style scoped lang="scss">
+.xfn-table-list {
+  .el-breadcrumb {
+    margin: 20px;
+  }
+}
 </style>

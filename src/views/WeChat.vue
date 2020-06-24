@@ -1,132 +1,91 @@
 <template>
-  <div class="we-chat">
-    <div>
-      <span>我想对你说：</span>
-      <el-input type="text" v-model="formData.dailog" @keyup.native.space="doKeyup"></el-input>
-      <el-button type="primary" @click="send">发送</el-button>
-    </div>
-    <div class="xfn_dailog">
-      
-      <el-card>
-        <div >
-          <el-avatar shape="square" :size="50">{{formData.adminName}}</el-avatar>
-        <span class="xfn_message">{{formData.dailog}}</span>
-      </div>
-      </el-card>
-    </div>
-      <div class="xfn_dailog">
-      
-      <el-card>
-        <div >
-          <el-avatar shape="square" :size="50">{{formData.adminName}}</el-avatar>
-        <span class="xfn_message">{{formData.dailog}}</span>
-      </div>
-      </el-card>
-    </div>
-      <div class="xfn_dailog">
-      
-      <el-card>
-        <div >
-          <el-avatar shape="square" :size="50">{{formData.adminName}}</el-avatar>
-        <span class="xfn_message">{{formData.dailog}}</span>
-      </div>
-      </el-card>
-    </div>
-      <div class="xfn_dailog">
-      
-      <el-card>
-        <div >
-          <el-avatar shape="square" :size="50">{{formData.adminName}}</el-avatar>
-        <span class="xfn_message">{{formData.dailog}}</span>
-      </div>
-      </el-card>
-    </div>
-      <div class="xfn_dailog">
-      
-      <el-card>
-        <div >
-          <el-avatar shape="square" :size="50">{{formData.adminName}}</el-avatar>
-        <span class="xfn_message">{{formData.dailog}}</span>
-      </div>
-      </el-card>
-    </div>
-      <div class="xfn_dailog">
-      
-      <el-card>
-        <div >
-          <el-avatar shape="square" :size="50">{{formData.adminName}}</el-avatar>
-        <span class="xfn_message">{{formData.dailog}}</span>
-      </div>
-      </el-card>
-    </div>
-    
-     
-    
-  </div>
-</template>
- <script>
-export default {
-  data() {
-    return {
-      formData: {
-        dailog: "",
-        baseUrl: this.$store.state.globalSettings.apiUrl,
-        adminName: this.$store.state.adminName,
-        inputTime: ""
-      }
-    };
-  },
-  methods: {
-    doKeyup() {
-      var url = this.formData.baseUrl + "/admin/dailog/drafts";
-      var draftData = {
-        adminName: this.formData.adminName,
-        word: this.formData.dailog,
-        inputTime: new Date().getTime()
-      };
-      this.$axios
-        .post(url, draftData)
-        .then(res => {
-          if (200 == res.data.code) 
-          console.log("输入成功");
-          else console.log("输入失败");
-        })
-        .catch(err => console.log(err));
-    },
-
-    send() {
-      var url = this.formData.baseUrl + "/admin/dailog/message";
-      var messageData = {
-        adminName: this.formData.adminName,
-        message: this.formData.dailog,
-        sendTime: new Date().getTime()
-      };
-
-      this.$axios
-        .post(url, messageData)
-        .then(res => {
-          if (200 == res.data.code) this.formData.dailog = "";
-          else console.log("发送失败");
-        })
-        .catch(err => console.log(err));
-    }
-  }
-};
-</script>
+    <div class="box">
+        <a-input-search
+                placeholder="请写下你想对我说的话吧"
+                @search="websocketsend"
+                enterButton="发消息"
+                size="large"
+                v-model="message"
+        />
  
+        <div class="mt20 btn">
+            <a-button type="primary" @click="initWebSocket">建立链接</a-button>
+            <a-button type="primary" @click="websocketclose">断开连接</a-button>
+        </div>
+ 
+    </div>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                message: '你好',
+                wsUri: 'ws://127.0.0.1:8090/admin/dailog',
+                isWebSocket: false,//判断是否链接成功！
+            }
+        },
+        created() {
+            this.initWebSocket();
+            console.log("你要发送的消息是", this.message)
+        },
+        destroyed() {
+            this.websock.close() //离开路由之后断开websocket连接
+        },
+        methods: {
+            initWebSocket() { //初始化weosocket
+                this.websock = new WebSocket(this.wsUri);
+                this.websock.onmessage = this.websocketonmessage;
+                this.websock.onopen = this.websocketonopen;
+                this.websock.onerror = this.websocketonerror;
+            },
+            websocketonopen() { //连接建立之后执行send方法发送数据
+                this.isWebSocket = true;
+                console.log("链接成功！", this.isWebSocket)
+                // this.websocketsend(JSON.stringify(actions));
+            },
+            websocketonerror() {//连接建立失败重连
+                this.$message.info("重新建立链接中");
+                this.initWebSocket();
+            },
+            websocketonmessage(e) { //数据接收
+                // const redata = JSON.parse(e.data);
+                console.log("redata", e.data)
+            },
+            websocketsend(Data) {//数据发送
+                let messageData = {
+                    adminName: this.$store.state.adminName,
+                    message: this.message
+                };
+                console.log("您正在发送消息", messageData);
+                if (this.isWebSocket) {
+                    this.websock.send(messageData);
+                } else {
+                    console.log("请先建立链接");
+                    this.$message.error("请先建立链接")
+                }
+ 
+            },
+            websocketclose(e) {  //关闭
+                this.isWebSocket = false;
+                this.websock.close();
+                console.log('断开连接', e);
+            },
+        }
+ 
+    }
+</script>
 <style scoped lang="scss">
-.el-input {
-  width: 800px;
-}
-.we-chat {
-  padding: 50px 0px;
-}
-.xfn_dailog{
-  margin: 20px 50px;
-}
-.xfn_message{
-  margin: 0px 20px;
-  
-}
-
+    .box {
+        margin-top: 20px;
+        width: 500px;
+        margin-left: 100px;
+ 
+        .btn {
+            button {
+                margin: 0 10px;
+            }
+        }
+    }
+ 
+ 
 </style>

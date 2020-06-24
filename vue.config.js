@@ -4,8 +4,8 @@
 module.exports={
 	//Webpack开发服务器的设置
 	devServer:{
-		// host: '192.168.0.100',
-		// port: 8091
+		 host: '0.0.0.0',
+		 port: 8091
 		
 	}
 }

@@ -23,8 +23,8 @@ export default {
   data() {
     return {
       formData: {
-        aname: "",
-        apwd: ""
+        aname: "admin",
+        apwd: "123456"
       },
       rules: {
         aname: [{ required: true, message: "管理员名不能为空" }],

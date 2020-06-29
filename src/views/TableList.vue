@@ -6,8 +6,8 @@
       <el-breadcrumb-item>桌台列表</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row>
-      <el-col v-for="(t,i) in tableList" :sm="12" :md="8" :lg="6" :xl="4">
-        <xfn-table :data="t"></xfn-table>
+      <el-col v-for="item in tableList" :key="item.tid" :sm="12" :md="8" :lg="6" :xl="4">
+        <xfn-table :data="item"></xfn-table>
       </el-col>
     </el-row>
   </div>
@@ -36,7 +36,7 @@ export default {
 <style scoped lang="scss">
 .xfn-table-list {
   .el-breadcrumb {
-    margin: 20px;
+    margin: 10px;
   }
 }
 </style>

@@ -33,7 +33,7 @@ export default {
 }
 </script>
    
-<style scoped lang="scss">
+<style lang="scss">
 .xfn-table-list {
   .el-breadcrumb {
     margin: 10px;

@@ -15,7 +15,7 @@
         <el-row>
           <el-col :sm="12" :md="8" :lg="6" :xl="4" v-for="(d,j) in c.dishList" :key="j">
             {{d.title}}
-            <img :src="require('../assets/img/dish/' + d.imgUrl)" :alt="d.title" style="max-width:95%">
+            <img :src="imgBaseUrl + d.imgUrl" :alt="d.title" style="max-width:95%">
           </el-col>
         </el-row>
       </el-tab-pane>
@@ -27,6 +27,7 @@
 export default {
   data(){
     return{
+      imgBaseUrl: this.$store.state.globalSettings.apiUrl + '/img/dish/',
       dishList: []  //形如：[{cid: 1, cname: '肉类', dishList:[..]}...]
     }
   },
@@ -38,13 +39,17 @@ export default {
 }
 </script>
    
-<style scoped lang="scss">
+<style lang="scss">
   .xfn-dish-list {
     .el-breadcrumb {
-      margin: 20px;
+      margin: 10px;
     }
-    
+    .el-badge__content.is-fixed {
+	    top: 8px;
+	    right: 3px;
+    }
   }
+  
   
   
 </style>

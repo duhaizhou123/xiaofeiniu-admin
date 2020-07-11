@@ -6,7 +6,7 @@
 </template>
 
     
-<style scoped lang="scss">
+<style lang="scss">
   .xfn-notfound {
     text-align: center;
     padding-top: 200px;

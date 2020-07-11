@@ -162,10 +162,10 @@ export default {
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss">
 .xfn-category-list {
   .el-breadcrumb {
-    margin: 20px;
+    margin: 10px;
   }
 }
 </style>

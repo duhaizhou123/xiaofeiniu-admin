@@ -59,7 +59,6 @@ export default {
       // canvas.innerHTML = '';
       //每个桌台对应的URL形如：http://127.0.0.1:8092/#/3
       var tableUrl = this.$store.state.globalSettings.appUrl + '/#/' + this.data.tid;
-      console.log(tableUrl);
       //生成二维码
       qrcode.toCanvas(canvas, tableUrl, {
         width: 300,

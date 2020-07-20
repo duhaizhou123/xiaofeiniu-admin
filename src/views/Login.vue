@@ -46,9 +46,11 @@ export default {
         this.$axios
           .post(url, this.formData)
           .then(res => {
-            if (200 == res.data.code) {//登录成功
-              //将管理员名存储到Vuex存储仓库中
-              this.$store.commit("setAdminName", this.formData.aname);
+            if (200 == res.data.code) {
+              //将用户信息存储到Vuex存储仓库中
+              this.$store.commit("setAdminName", res.data.user.aname);
+              this.$store.commit("setAdminRole", res.data.user.role);
+
 
               //记录登录信息
               var url = this.$store.state.globalSettings.apiUrl
@@ -59,7 +61,7 @@ export default {
               }
               this.$axios.post(url,loginData).then(res=>{
                 if(200 == res.data.code)
-                console.log(res.data);
+                console.log(res);
               }).catch(err=>{
                 console.log(err);
               })

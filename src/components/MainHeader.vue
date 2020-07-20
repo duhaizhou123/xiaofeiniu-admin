@@ -3,6 +3,7 @@
 		<h3 class="headr-title">{{$store.state.globalSettings.appName}}管理后台</h3>
 		<div class="header-right">
 			<span class="xfn-user-info">欢迎回来：{{$store.state.adminName}}    </span>
+			<span class="xfn-user-info">角色：{{$store.state.adminRole | Role}}    </span>
 			<el-button size="mini" type="primary" round @click="doQuit">退出</el-button>
 		</div>
 		
@@ -14,8 +15,11 @@
 export default {
 	methods:{
 		doQuit(){//退出登录后清除用户信息，跳转至登录页面
-			this.$store.commit('setAdminName','');
-			this.$router.push('/login');
+			var url = this.$store.state.globalSettings.apiUrl + '/admin/loginOut'
+			this.$axios.get(url).then((res)=>{
+				this.$router.push('/login');
+			}).catch(err => console.log(err))
+			;
 		}
 	}
 }

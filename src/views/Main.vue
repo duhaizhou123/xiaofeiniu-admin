@@ -6,7 +6,7 @@
       <el-aside width="200px">
         <el-menu :unique-opened="true" :router="true" :default-openeds="defaultOpeneds" :default-active="defaultActive">
           <!--菜单项1-->
-          <el-menu-item index="/settings">
+          <el-menu-item v-if="isSuperAdmin" index="/settings">
             <i class="el-icon-setting"></i>
             <span slot="title">全局设置</span>
           </el-menu-item>
@@ -84,7 +84,7 @@ import MainHeader from '../components/MainHeader'
 export default {
   data(){//数据属性
     return{
-
+      isSuperAdmin: sessionStorage.getItem('role') == 2 ? true : false
     }
   },
   computed:{//计算属性=数据属性+操作方法
@@ -97,7 +97,6 @@ export default {
         return [];
       }
     },
-
 
     defaultActive(){
       return this.$route.path;

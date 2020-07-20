@@ -35,6 +35,13 @@
 
 <script>
 export default {
+  beforeRouteEnter: (to,from,next) => {//组件内路由守卫
+    if(2 == sessionStorage.getItem('role')){
+      next()
+    }else{
+        alert('对不起，您没有权限哦！')
+    }
+  },
   data() {
     return {
       formData: {

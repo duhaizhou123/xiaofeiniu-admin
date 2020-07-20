@@ -8,6 +8,7 @@ import axios from 'axios'
 
 Vue.use(ElementUI)  //注册ElementUI插件
 Vue.prototype.$axios = axios  //把axios设置为所有Vue组件实例的成员属性，以后可以直接使用this.$axios发送异步请求
+Vue.prototype.$axios.defaults.withCredentials=true;//每次向后端发起请求都携带cookie
 Vue.config.productionTip = false
 
 //创建全局过滤器
@@ -64,6 +65,17 @@ Vue.filter('tableStatus',(val)=>{
       break;
     default:
       return '其他'
+  }
+})
+
+Vue.filter('Role',(val)=>{
+  //把数字转化为用户角色
+  if(0 == val){
+    return '普通用户'
+  }else if(1 == val){
+    return '管理员'
+  }else{
+    return '超级管理员'
   }
 })
 

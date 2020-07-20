@@ -98,8 +98,24 @@ Vue.use(VueRouter)
   }
 ]
 
+
 const router = new VueRouter({
   routes
 })
-
+router.beforeEach((to,from,next)=>{
+  if('/login' != to.path){
+    //判断是否需要登录
+    if (sessionStorage.getItem('aname')) {
+      next();
+    }else{
+      next({
+        path:"/login"
+      });
+    }
+    
+  }else{
+    sessionStorage.clear();
+    next(); 
+  }
+});
 export default router

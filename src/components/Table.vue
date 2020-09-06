@@ -69,24 +69,25 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .xfn-table-info {
   padding: 5px;
   text-align: center;
   .table {
     margin: 5px auto;
     width: 90%;
-    height: 120px;
+    height: 100px;
     line-height: 120px;
     border: 1px solid #909399;
     border-radius: 50%;
     box-shadow: 7px -3px 8px;
   }
+  .el-card__body {
+	  padding: 5px;
+  } 
 }
 
-.el-card__body {
-	padding: 10px;
-}
+
 </style>
 
 

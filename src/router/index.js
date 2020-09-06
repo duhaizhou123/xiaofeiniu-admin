@@ -7,7 +7,6 @@ import TableList from '../views/TableList.vue'
 import GlobalSettings from '../views/GlobalSettings.vue'
 import TableAdd from '../views/TableAdd.vue'
 import TableDelete from '../views/TableDelete.vue'
-import TableUpdate from '../views/TableUpdate.vue'
 import CategoryList from '../views/CategoryList.vue'
 import DishList from '../views/DishList.vue'
 import DishAdd from '../views/DishAdd.vue'
@@ -15,7 +14,6 @@ import DishDelete from '../views/DishDelete.vue'
 import DishUpdate from '../views/DishUpdate.vue'
 import OrderList from '../views/OrderList.vue'
 import Security from '../views/Security.vue'
-import WeChat from '../views/WeChat.vue'
 
 
 Vue.use(VueRouter)
@@ -55,10 +53,6 @@ Vue.use(VueRouter)
         component: TableDelete
       },
       {
-        path: '/table/update',
-        component: TableUpdate
-      },
-      {
         path: '/category/list',
         component: CategoryList
       },
@@ -85,10 +79,6 @@ Vue.use(VueRouter)
       {
         path: '/security',
         component: Security
-      },
-      {
-        path: '/wechat',
-        component: WeChat
       }
     ]
   },

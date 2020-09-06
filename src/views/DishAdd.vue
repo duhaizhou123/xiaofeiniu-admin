@@ -149,12 +149,6 @@ export default {
 
 
 <style lang="scss">
-.xfn-dish-add {
-  .el-breadcrumb {
-    margin: 10px;
-  }
-}
-
 .xfn-uploader {
   .el-upload {
     border: 1px dashed #d9d9d9;

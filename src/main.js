@@ -68,7 +68,7 @@ Vue.filter('tableStatus',(val)=>{
   }
 })
 
-Vue.filter('Role',(val)=>{
+Vue.filter('role',(val)=>{
   //把数字转化为用户角色
   if(0 == val){
     return '普通用户'

@@ -41,9 +41,6 @@ export default {
    
 <style lang="scss">
   .xfn-dish-list {
-    .el-breadcrumb {
-      margin: 10px;
-    }
     .el-badge__content.is-fixed {
 	    top: 8px;
 	    right: 3px;

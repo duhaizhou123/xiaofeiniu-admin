@@ -99,10 +99,5 @@ export default {
 </script>
   
 <style lang="scss">
-.xfn-global_settings {
-  .el-breadcrumb{
-    margin: 10px;
-  }
-  
-}
+
 </style>

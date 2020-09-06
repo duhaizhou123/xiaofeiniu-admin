@@ -44,8 +44,7 @@ export default {
         cancelButtonText: "取消",
         inputPattern: /.{1,}/,
         inputErrorMessage: "亲，菜品类别名称不能为空"
-      })
-        .then(({ value }) => {
+      }).then(({ value }) => {
           var url = this.$store.state.globalSettings.apiUrl + "/admin/category";
           this.$axios.post(url, { cname: value }).then(res => {
             if (200 == res.data.code) {//在数据库添加菜品成功
@@ -70,8 +69,7 @@ export default {
               });
             }
           });
-        })
-        .catch(() => {});
+        }).catch(() => {});
     },
 
     //修改菜品类别
@@ -142,8 +140,7 @@ export default {
                   message: "亲，删除失败了"
                 });
               }
-            })
-            .catch(err => {
+            }).catch(err => {
               console.log(err);
             });
         })
@@ -163,9 +160,7 @@ export default {
 
 
 <style lang="scss">
-.xfn-category-list {
-  .el-breadcrumb {
-    margin: 10px;
+.xfn-category-list>.el-button{
+    margin: 0px 0px 15px 0px;
   }
-}
 </style>

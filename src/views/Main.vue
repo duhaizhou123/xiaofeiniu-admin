@@ -1,6 +1,6 @@
 
 <template>
-  <div class="main">
+  <div class="main-container">
     <el-container>
       <!--侧边导航栏-->
       <el-aside width="200px">
@@ -8,14 +8,14 @@
           <!--菜单项1-->
           <el-menu-item v-if="isSuperAdmin" index="/settings">
             <i class="el-icon-setting"></i>
-            <span slot="title">全局设置</span>
+            <b slot="title">全局设置</b>
           </el-menu-item>
 
           <!--菜单项2-->
           <el-submenu index="table">
             <template slot="title">
               <i class="el-icon-s-grid"></i>
-              <span>桌台管理</span>
+              <b>桌台管理</b>
             </template>
               <el-menu-item-group>
                 <el-menu-item index="/table/list">桌台列表</el-menu-item>
@@ -27,14 +27,14 @@
           <!--菜单项3-->
           <el-menu-item index="/category/list">
             <i class="el-icon-menu"></i>
-            <span slot="title">菜品类别</span>
+            <b slot="title">菜品类别</b>
           </el-menu-item>
 
           <!--菜单项4-->
           <el-submenu index="dish">
             <template slot="title">
               <i class="el-icon-coin"></i>
-              <span>菜品管理</span>
+              <b>菜品管理</b>
             </template>
               <el-menu-item index="/dish/list">菜品列表</el-menu-item>
               <el-menu-item index="/dish/add">添加菜品</el-menu-item>
@@ -45,13 +45,13 @@
           <!--菜单项5-->
           <el-menu-item index="/order/list">
             <i class="el-icon-s-order"></i>
-            <span slot="title">订单管理</span>
+            <b slot="title">订单管理</b>
           </el-menu-item>
 
           <!--菜单项6-->
           <el-menu-item index="/security">
             <i class="el-icon-user"></i>
-            <span slot="title">安全管理</span>
+            <b slot="title">安全管理</b>
           </el-menu-item>
         </el-menu>
       </el-aside>
@@ -109,4 +109,7 @@ export default {
 </script>
     
 <style lang="scss">
+.main-container{
+  padding : 20px;
+}
 </style>

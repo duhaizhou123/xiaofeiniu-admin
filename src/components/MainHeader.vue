@@ -16,7 +16,7 @@ export default {
 	methods:{
 		doQuit(){//退出登录后清除用户信息，跳转至登录页面
 			var url = this.$store.state.globalSettings.apiUrl + '/admin/loginOut'
-			this.$axios.get(url).then((res)=>{
+			this.$axios.get(url).then((res)=>{			
 				this.$router.push('/login');
 			}).catch(err => console.log(err))
 			;
@@ -31,7 +31,7 @@ export default {
 		padding: 0px 20px;
 		border-radius: 5px;
 		text-align: right;
-		background-color: #DCDFE6;
+		background-color: rgb(253, 226, 226);
 		line-height: $xfn-header-height;
 		height: $xfn-header-height;
 		.xfn-user-info{

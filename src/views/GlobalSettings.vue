@@ -79,9 +79,9 @@ export default {
             type: 'error'
           })
         }
-      }).catch((err)=>{
-        console.log(err);
-      })
+      }).catch(err=>
+        console.log(err)
+      )
     },
     
     doCancel(){

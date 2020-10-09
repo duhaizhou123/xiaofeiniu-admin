@@ -4,7 +4,7 @@
       <el-breadcrumb-item :to="{ path: '/main'}">首页</el-breadcrumb-item>
       <el-breadcrumb-item>菜品类别管理</el-breadcrumb-item>
     </el-breadcrumb>
-    <el-button type="primary" @click="addCategory">添加菜品类别</el-button>
+    <el-button plain type="primary" size="mini"  icon="el-icon-plus"  @click="addCategory">添加菜品类别</el-button>
     
     <el-table :data="categoryList" border stripe style="width: 1000px">
     <el-table-column

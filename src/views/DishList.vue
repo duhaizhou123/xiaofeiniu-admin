@@ -13,9 +13,8 @@
         </span>
 
         <el-row>
-          <el-col :sm="12" :md="8" :lg="6" :xl="4" v-for="(d,j) in c.dishList" :key="j">
-            {{d.title}}
-            <img :src="imgBaseUrl + d.imgUrl" :alt="d.title" style="max-width:95%">
+          <el-col :sm="12" :md="8" :lg="6" :xl="4" v-for="(dish,i) in c.dishList" :key="i">
+            <xfn-dish :data="dish"></xfn-dish>
           </el-col>
         </el-row>
       </el-tab-pane>
@@ -24,10 +23,10 @@
 </template>
 
 <script>
+import Dish from '../components/Dish'
 export default {
   data(){
     return{
-      imgBaseUrl: this.$store.state.globalSettings.apiUrl + '/img/dish/',
       dishList: []  //形如：[{cid: 1, cname: '肉类', dishList:[..]}...]
     }
   },
@@ -35,6 +34,9 @@ export default {
     //异步请求菜品列表
     var url = this.$store.state.globalSettings.apiUrl + '/admin/dish';
     this.$axios.get(url).then(res =>  this.dishList = res.data).catch(err => console.log(err))
+  },
+  components: {
+    'xfn-dish' : Dish
   }
 }
 </script>

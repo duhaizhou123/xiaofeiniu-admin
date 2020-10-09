@@ -1,6 +1,6 @@
 
 <template>
-  <div class="main-container">
+  <div  class="xfn-main-container">
     <el-container>
       <!--侧边导航栏-->
       <el-aside width="200px">
@@ -38,14 +38,12 @@
             </template>
               <el-menu-item index="/dish/list">菜品列表</el-menu-item>
               <el-menu-item index="/dish/add">添加菜品</el-menu-item>
-              <el-menu-item index="/dish/update">修改菜品</el-menu-item>
-              <el-menu-item index="/dish/delete">删除菜品</el-menu-item>
           </el-submenu>
 
           <!--菜单项5-->
           <el-menu-item index="/order/list">
             <i class="el-icon-s-order"></i>
-            <b slot="title">订单管理</b>
+            <b slot="title">订单列表</b>
           </el-menu-item>
 
           <!--菜单项6-->
@@ -109,7 +107,7 @@ export default {
 </script>
     
 <style lang="scss">
-.main-container{
-  padding : 20px;
+.xfn-main-container{
+  padding: 10px;
 }
 </style>

@@ -10,8 +10,6 @@ import TableDelete from '../views/TableDelete.vue'
 import CategoryList from '../views/CategoryList.vue'
 import DishList from '../views/DishList.vue'
 import DishAdd from '../views/DishAdd.vue'
-import DishDelete from '../views/DishDelete.vue'
-import DishUpdate from '../views/DishUpdate.vue'
 import OrderList from '../views/OrderList.vue'
 import Security from '../views/Security.vue'
 
@@ -25,8 +23,7 @@ Vue.use(VueRouter)
   },
   {
     path: '/login',
-    component: Login,
-    
+    component: Login, 
   },
   {
     path: '/main',
@@ -63,14 +60,6 @@ Vue.use(VueRouter)
       {
         path: '/dish/add',
         component: DishAdd
-      },
-      {
-        path: '/dish/delete',
-        component: DishDelete
-      },
-      {
-        path: '/dish/update',
-        component: DishUpdate
       },
       {
         path: '/order/list',

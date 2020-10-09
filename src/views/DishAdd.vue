@@ -73,7 +73,7 @@ export default {
         ],
         detail: [
           {required: true, message: '请输入菜品描述', trigger: 'blur'}
-        ],
+        ]
         
 
 

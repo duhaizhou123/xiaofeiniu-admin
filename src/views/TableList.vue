@@ -21,14 +21,17 @@ export default {
       tableList: []
     }
   },
-  mounted(){//页面挂载后向后台请求所有桌台信息
+  methods: {
+    
+  },
+  created(){//页面挂载后向后台请求所有桌台信息
     var url = this.$store.state.globalSettings.apiUrl + '/admin/table';
     this.$axios.get(url).then(res => {
         this.tableList = res.data.tableList;
     }).catch(err => console.log(err))
   },
   components:{
-    "xfn-table": Table
+    'xfn-table': Table
   }
 }
 </script>

@@ -11,9 +11,7 @@ export default new Vuex.Store({
       apiUrl: sessionStorage.getItem('apiUrl') ||'http://127.0.0.1:8090',
       appName: sessionStorage.getItem('appName') ||'',
       adminUrl: sessionStorage.getItem('adminUrl') ||'',
-      appUrl: sessionStorage.getItem('appUrl') ||'',
-      icp: sessionStorage.getItem('icp') ||'',
-      copyright: sessionStorage.getItem('copyright') ||''
+      appUrl: sessionStorage.getItem('appUrl') ||''
     }
   },
   mutations: {
@@ -30,9 +28,7 @@ export default new Vuex.Store({
       sessionStorage.setItem('apiUrl',value.apiUrl)
       sessionStorage.setItem('adminUrl',value.adminUrl)
       sessionStorage.setItem('appUrl',value.appUrl)
-      sessionStorage.setItem('icp',value.icp)
-      sessionStorage.setItem('copyright',value.copyright)
-      state.globalSettings = value
+      
     }
   },
   actions: {

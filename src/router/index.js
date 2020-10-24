@@ -1,18 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
-import Main from '../views/Main.vue'
-import NotFound from '../views/NotFound.vue'
-import TableList from '../views/TableList.vue'
-import GlobalSettings from '../views/GlobalSettings.vue'
-import TableAdd from '../views/TableAdd.vue'
-import TableDelete from '../views/TableDelete.vue'
-import CategoryList from '../views/CategoryList.vue'
-import DishList from '../views/DishList.vue'
-import DishAdd from '../views/DishAdd.vue'
-import OrderList from '../views/OrderList.vue'
-import Security from '../views/Security.vue'
-
 
 Vue.use(VueRouter)
 
@@ -23,11 +10,11 @@ Vue.use(VueRouter)
   },
   {
     path: '/login',
-    component: Login, 
+    component: () => import('../views/Login.vue')
   },
   {
     path: '/main',
-    component: Main,
+    component: () => import('../views/Main.vue'),
     children:[
       {
         path: '',
@@ -35,45 +22,45 @@ Vue.use(VueRouter)
       },
       {
         path: '/settings',
-        component: GlobalSettings
+        component: () => import('../views/GlobalSettings.vue')
       },
       {
         path: '/table/list',
-        component: TableList
+        component: () => import('../views/TableList.vue')
       },
       {
         path: '/table/add',
-        component: TableAdd
+        component: () => import('../views/TableAdd.vue')
       },
       {
         path: '/table/delete',
-        component: TableDelete
+        component: () => import('../views/TableDelete.vue')
       },
       {
         path: '/category/list',
-        component: CategoryList
+        component: () => import('../views/CategoryList.vue')
       },
       {
         path: '/dish/list',
-        component: DishList
+        component: () => import('../views/DishList.vue')
       },
       {
         path: '/dish/add',
-        component: DishAdd
+        component: () => import('../views/DishAdd.vue')
       },
       {
         path: '/order/list',
-        component: OrderList
+        component: () => import('../views/OrderList.vue')
       },
       {
         path: '/security',
-        component: Security
+        component: () => import('../views/Security.vue')
       }
     ]
   },
   {
     path: '*',
-    component: NotFound
+    component: () => import('../views/NotFound.vue')
   }
 ]
 

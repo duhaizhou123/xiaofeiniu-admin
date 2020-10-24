@@ -15,8 +15,8 @@
 export default {
 	methods:{
 		doQuit(){//退出登录后清除用户信息，跳转至登录页面
-			var url = this.$store.state.globalSettings.apiUrl + '/admin/loginOut'
-			this.$axios.get(url).then((res)=>{			
+			var url = this.$store.state.globalSettings.apiUrl + '/admin/loginOut';
+			this.$axios.get(url).then(res => {			
 				this.$router.push('/login');
 			}).catch(err => console.log(err))
 			;

@@ -107,8 +107,8 @@ export default {
 			this.isShowEditDishDialog = true;
 		},
 		//提交修改信息
-		doSubmit(formName){console.log(this.formData);
-			this.$refs[formName].validate((valid) => {//对表单进行校验
+		doSubmit(formName){
+			this.$refs[formName].validate(valid => {//对表单进行校验
 				if(valid){//校验通过发送请求保存修改后菜品信息
 					var url = this.$store.state.globalSettings.apiUrl + '/admin/dish';
 					this.$axios.put(url,this.formData).then(res => {

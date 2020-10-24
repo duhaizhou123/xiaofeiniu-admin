@@ -8,7 +8,8 @@ import axios from 'axios'
 
 Vue.use(ElementUI)  //注册ElementUI插件
 Vue.prototype.$axios = axios  //把axios设置为所有Vue组件实例的成员属性，以后可以直接使用this.$axios发送异步请求
-Vue.prototype.$axios.defaults.withCredentials=true;//每次向后端发起请求都携带cookie
+Vue.prototype.$axios.defaults.withCredentials = true//每次向后端发起请求都携带凭证
+Vue.prototype.$axios.defaults.baseURL = 'http://127.0.0.1:8090'
 Vue.config.productionTip = false
 
 //创建全局过滤器

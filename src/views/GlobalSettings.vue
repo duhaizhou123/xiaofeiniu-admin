@@ -18,12 +18,6 @@
         <el-form-item label="顾客APP地址：">
           <el-input v-model="formData.appUrl"></el-input>
         </el-form-item>
-        <el-form-item label="ICP备案号：">
-          <el-input v-model="formData.icp"></el-input>
-        </el-form-item>
-        <el-form-item label="版权声明：">
-          <el-input v-model="formData.copyright"></el-input>
-        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="doCommit">提交</el-button>
           <el-button @click="doCancel">取消</el-button>
@@ -48,9 +42,7 @@ export default {
         appName: this.$store.state.globalSettings.appName,
         apiUrl: this.$store.state.globalSettings.apiUrl,
         adminUrl: this.$store.state.globalSettings.adminUrl,
-        appUrl: this.$store.state.globalSettings.appUrl,
-        icp: this.$store.state.globalSettings.icp,
-        copyright: this.$store.state.globalSettings.copyright
+        appUrl: this.$store.state.globalSettings.appUrl
       }
     };
   },
@@ -89,8 +81,6 @@ export default {
       this.formData.apiUrl = this.$store.state.globalSettings.apiUrl;
       this.formData.adminUrl = this.$store.state.globalSettings.adminUrl;
       this.formData.appUrl = this.$store.state.globalSettings.appUrl;
-      this.formData.icp = this.$store.state.globalSettings.icp;
-      this.formData.copyright = this.$store.state.globalSettings.copyright;
     }
 
   }
